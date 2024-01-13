@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
-
-const connection = mongoose.connect(`mongodb+srv://gauravxv:Gaurav123456789@cluster0.fjs316e.mongodb.net/greenmentor`);
+require("dotenv").config();
+const connection = mongoose.connect(process.env.MONGO_URL);
 
 module.exports = {
     connection
