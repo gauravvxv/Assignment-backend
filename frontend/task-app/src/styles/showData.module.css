@@ -1,0 +1,62 @@
+.taskContainer {
+    display: grid;
+  grid-template-columns: repeat(4,1fr);
+  width: 100%;
+  padding-top: 50px;
+  gap: 10px;
+  }
+  
+  .taskBox {
+    width: 87%;
+    height: 80%;
+    text-align: center;
+    margin: 10px;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+  }
+  
+  .twoBtn{
+    display: flex;
+    padding-left: 50px;
+  }
+
+  .btn{
+    background-color: #6dabe4;
+   border: none;
+   width: 80px;
+   height: 40px;
+   border-radius: 10px;
+   color: white;
+   cursor: pointer;
+}
+
+.buttonSpacer {
+    margin-right: 10px; 
+}
+
+.changingBtn{
+    display: flex;
+    padding-left: 50px;
+    padding-top: 20px;
+}
+
+.changeInp{
+    width: 300px;
+    height: 20px;
+    text-align: center;
+    font-size: 15px;
+    border: none;
+    border-bottom: 1px solid black;
+}
+
+
+.changebtnn{
+    background-color: #6dabe4;
+    border: none;
+    width: 100px;
+    height: 40px;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+}

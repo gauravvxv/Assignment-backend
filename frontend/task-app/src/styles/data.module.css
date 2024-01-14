@@ -1,0 +1,59 @@
+.data{
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    width: 80%;
+    padding: 20px;
+}
+
+.taskapp{
+    font-size: 20px;
+    margin-top: -25px;
+}
+
+.btnPro{
+   background-color: #6dabe4;
+   border: none;
+   width: 120px;
+   height: 50px;
+   border-radius: 10px;
+   color: white;
+   cursor: pointer;
+}
+
+.twobtn{
+    display: flex;
+    padding-left: 140px;
+}
+.buttonSpacer {
+    margin-right: 10px; 
+}
+
+.error{
+    color: red;
+}
+
+.inpPart{
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    width: 30%;
+text-align: center;
+height: 260px;
+border-radius: 10px;
+padding: 10px;
+}
+
+.inptag{
+    width: 300px;
+    height: 40px;
+    text-align: center;
+    font-size: 15px;
+    border: none;
+    border-bottom: 1px solid black;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh; 
+  }
