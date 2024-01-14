@@ -61,7 +61,7 @@ userController.post("/signup",(req,res)=>{
 
           if(result){
             const token = jwt.sign({userID: user._id }, process.env.SECRET_KEY);
-            res.status(200).send({message: "Login Successful",token: token})
+            res.status(200).send({message: "Login Successful",token: token,userId:user._id})
           }
           else{
             res.status(404).send("Invalid credentials")
@@ -69,9 +69,32 @@ userController.post("/signup",(req,res)=>{
         }) 
     })
 
-    userController.get("/profile", async (req,res)=>{
+
+    userController.get("/profile/data", async (req,res)=>{
         try {
             const profileData = await AuthModel.find();
+            res.status(200).send(profileData);
+        } catch (error) {
+            console.log(error);
+            res.status(500).send("Something went wrong")
+        }
+    })
+
+
+    userController.get("/profile", async (req,res)=>{
+        try {
+            const userId = req.query.id;
+
+            if(!userId){
+                return res.status(400).send("User ID is required");
+            }
+
+            const profileData = await AuthModel.findById(userId);
+
+            if (!profileData) {
+                return res.status(404).send("User not found");
+              }
+
             res.status(200).send(profileData);
         } catch (error) {
             console.log(error);
@@ -97,7 +120,10 @@ userController.post("/signup",(req,res)=>{
     
                     res.status(200).send("Your profile is updated successfully");
                 });
-            }
+            }else {  
+               await AuthModel.findByIdAndUpdate(id, userData);
+                res.status(200).send('Your profile is updated successfully');
+              }
         } catch (error) {
             console.log(error);
             res.status(500).send("Something went wrong")

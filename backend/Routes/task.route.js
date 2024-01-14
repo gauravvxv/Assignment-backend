@@ -1,10 +1,9 @@
 const {Router} = require("express");
 const {TaskModel} = require("../model/task.model");
 const {validateTask} = require("../middlewares/validate")
-const authenticate = require("../middlewares/authentication")
 const taskController = Router();
 
-// taskController.use(authenticate)
+
 
 
 taskController.get("/task",async(req,res)=>{
