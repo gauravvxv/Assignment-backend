@@ -1,17 +1,11 @@
 const {Router} = require("express");
 const {TaskModel} = require("../model/task.model");
-
+const {validateTask} = require("../middlewares/validate")
+const authenticate = require("../middlewares/authentication")
 const taskController = Router();
 
+// taskController.use(authenticate)
 
-const validateTask = (req,res,next) => {
-    const {title,description} = req.body;
-
-    if(!title || !description){
-        return res.status(400).send("Title and Description are required")
-    }
-    next();
-}
 
 taskController.get("/task",async(req,res)=>{
    try {

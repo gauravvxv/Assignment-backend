@@ -3,13 +3,18 @@ const bcrypt = require("bcrypt");
 const {Router} = require("express");
 const {AuthModel} = require("../model/auth.model")
 
+require("dotenv").config();
+
+
 const userController = Router();
 
+
+
 userController.post("/signup",(req,res)=>{
-    const {name,email,password,phone} = req.body;
+    const {firstName,lastName,email,password,phone} = req.body;
 
 
-    if(!name || !email || !password || !phone){
+    if(!firstName ||!lastName || !email || !password || !phone){
         res.status(400).send("Please fill all the fields")
     }
 
@@ -20,10 +25,11 @@ userController.post("/signup",(req,res)=>{
         }
 
         const user = new AuthModel({
-            name,
+            firstName,
+            lastName,
             email,
-            password: hash,
             phone,
+            password: hash
         })
 
         try {
@@ -34,7 +40,7 @@ userController.post("/signup",(req,res)=>{
             res.status(500).send("Signup Failed")
         }
     });
-
+})
 
     userController.post("/login",async (req,res)=>{
         const{email,password}=req.body;
@@ -54,7 +60,7 @@ userController.post("/signup",(req,res)=>{
           }
 
           if(result){
-            const token = jwt.sign({userID: user._id }, 'shhhhh');
+            const token = jwt.sign({userID: user._id }, process.env.SECRET_KEY);
             res.status(200).send({message: "Login Successful",token: token})
           }
           else{
@@ -62,7 +68,42 @@ userController.post("/signup",(req,res)=>{
           }
         }) 
     })
-})
+
+    userController.get("/profile", async (req,res)=>{
+        try {
+            const profileData = await AuthModel.find();
+            res.status(200).send(profileData);
+        } catch (error) {
+            console.log(error);
+            res.status(500).send("Something went wrong")
+        }
+    })
+
+    userController.patch("/profile/:ID",async (req,res)=>{
+        try {
+            const id = req.params.ID;
+            const userData = req.body;
+
+            if(userData.password){
+
+                bcrypt.hash(userData.password, 10, async function (err, hash) {
+                    if (err) {
+                        res.status(500).send(err);
+                        return;
+                    }
+                    userData.password = hash;
+    
+                    await AuthModel.findByIdAndUpdate(id, userData);
+    
+                    res.status(200).send("Your profile is updated successfully");
+                });
+            }
+        } catch (error) {
+            console.log(error);
+            res.status(500).send("Something went wrong")
+        }
+    })
+
 
 module.exports={
     userController
