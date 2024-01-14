@@ -1,0 +1,130 @@
+.container{
+    text-align: center;
+    background-color: #c8bbe7;
+    padding-top: 10px;
+padding-bottom: 100px;
+}
+
+.btn{
+    background-color: #6dabe4;
+   border: none;
+   width: 100px;
+   height: 40px;
+   border-radius: 10px;
+   color: white;
+   cursor: pointer;
+}
+.buttonSpacer {
+    margin-right: 10px; 
+}
+
+.btnDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.userData{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.userData > div{
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    width: 50%;
+    height: 250px;
+    border-radius: 20px;
+}
+
+.userData > div h2{
+    font-size: 25px;
+    font-weight: 400;
+}
+
+.inputTags > div{
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    border: 1px solid black;
+    width: 400px;
+    height: 400px;
+    padding-top: 20px;
+    border-radius: 20px;
+}
+
+.inputTags{
+    padding-left: 40px;
+}
+
+.changingBtn{
+    display: flex;
+    padding-left: 85px;
+    padding-top: 20px;
+}
+
+.changeInp{
+    width: 250px;
+    height: 25px;
+    text-align: center;
+    font-size: 15px;
+    border: none;
+    border-radius: 5px;
+    border-bottom: 1px solid black;
+    background-color: #c8bbe7;;
+}
+
+@media (max-width: 768px) {
+    .container{
+        text-align: center;
+        background-color: #c8bbe7;
+        padding-top: 10px;
+    padding-bottom: 170px;
+    }
+    .userData > div{
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+        width: 80%;
+        height: 250px;
+        border-radius: 20px;
+    }
+    .userData > div h2{
+        font-size: 18px;
+        font-weight: 400;
+    }
+
+    .btn{
+        background-color: #6dabe4;
+       border: none;
+       width: 100px;
+       height: 40px;
+       border-radius: 10px;
+       color: white;
+       cursor: pointer;
+    }
+
+    .btnDiv{
+        padding-left: 20px;
+    }
+
+    .inputTags > div{
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+        border: 1px solid black;
+        width: 260px;
+        height: 400px;
+        padding-top: 20px;
+        border-radius: 20px;
+    }
+
+    .inputTags{
+        padding-right: 20px;
+    }
+
+    .changingBtn{
+        display: flex;
+        padding-right: 40px;
+        width: 100px;
+        padding-top: 20px;
+    }
+}

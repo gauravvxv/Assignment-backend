@@ -8,7 +8,7 @@ const ShowTask = () => {
 
     const taskDataShow = async () => {
         try {
-            const api = await fetch(`http://localhost:8000/task`);
+            const api = await fetch(`https://ant-sunglasses.cyclic.app/task`);
             const data = await api.json();
             console.log(data);
             setShowData(data);
@@ -19,7 +19,7 @@ const ShowTask = () => {
 
     useEffect(() => {
         taskDataShow();
-    }, [])
+    }, [showData])
 
 
     // edit function
@@ -30,7 +30,7 @@ const ShowTask = () => {
 
     const handleSaveChanges = async (ID) => {
         try {
-            await axios.patch(`http://localhost:8000/task/${ID}`, {
+            await axios.patch(`https://ant-sunglasses.cyclic.app/task/${ID}`, {
                 title: editData.title,
                 description: editData.description
             });
@@ -51,7 +51,7 @@ const ShowTask = () => {
 
     const handleDelete = async (ID) => {
         try {
-            await axios.delete(`http://localhost:8000/task/${ID}`);
+            await axios.delete(`https://ant-sunglasses.cyclic.app/task/${ID}`);
             console.log(`the task has been deleted of this id :${ID}`)
 
             taskDataShow();
@@ -77,7 +77,7 @@ const ShowTask = () => {
 
 
                             <div className={styles.changingBtn}>
-                                <button onClick={()=>handleSaveChanges(editData._id)} className={styles.changebtnn}>Save</button>
+                                <button onClick={() => handleSaveChanges(editData._id)} className={styles.changebtnn}>Save</button>
                                 <div className={styles.buttonSpacer}></div>
                                 <button onClick={handleCancel} className={styles.changebtnn}>Cancel</button>
                             </div>

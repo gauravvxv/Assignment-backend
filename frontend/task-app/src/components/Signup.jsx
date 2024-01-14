@@ -30,7 +30,7 @@ if(!firstName ||!lastName || !email || !password || !phone){
 }
 
 try {
-  const api = await axios.post('http://localhost:8000/signup',data)
+  const api = await axios.post('https://ant-sunglasses.cyclic.app/signup',data)
   alert("Signup Successful")
   console.log(api);
 
@@ -40,6 +40,7 @@ try {
   setPassword('');
   setPhone('');
 
+  
   window.location.href="/login"
 } catch (error) {
   console.log(error);

@@ -1,51 +1,49 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import styles from "../styles/login.module.css"
-import { Link } from 'react-router-dom'
-import Signup from './Signup'
+import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../Context/AuthContextProvider'
 import axios from 'axios'
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    const [loading,setLoading] = useState('');
+    const [loading, setLoading] = useState('');
+    const { login, authState } = useContext(AuthContext);
 
-    const handleClick = () => {
-        if (!email || !password) {
-            setError("Fill all the fields")
-            return
-        }
-        else{
-            setLoading(true);
-
-            setTimeout(()=>{
-                setLoading(false);
-                window.location.href="/task";
-            },1000)
-        }
-    }
-
-
-
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
+
         e.preventDefault();
+
         const data = {
             email: email,
             password: password
         }
+
         try {
             setLoading(true);
-        const api = await axios.post("http://localhost:8000/login",data);
-        setLoading(false);
-        console.log(api.data.token)
-        localStorage.setItem("token",api.data.token)
+            const api = await axios.post("https://ant-sunglasses.cyclic.app/login", data);
+            localStorage.setItem("token", api.data.token)
+            login(api.data.token)
+           console.log(api)
+            const userId = api.data.userId;
+            console.log(userId)
+            navigate(`/profile/${userId}`);
+
+
         } catch (error) {
             setLoading(false);
-            console.log(error)
+            console.error("Login failed:", error.response.data);
+            setError(error.response.data)
         }
     }
 
- 
+
+    if (authState.isAuth) {
+        console.log("user is Authenticated");
+    }
+
 
     return (
         <div className={styles.container}>
@@ -55,17 +53,17 @@ const Login = () => {
 
                     <form onSubmit={handleSubmit}>
 
-                        <input type="email" name="email" id="email" placeholder='Enter Your Email' value={email} onChange={(e)=>setEmail(e.target.value)} className={styles.inp} />
+                        <input type="email" name="email" id="email" placeholder='Enter Your Email' value={email} onChange={(e) => setEmail(e.target.value)} className={styles.inp} />
                         <br />
                         <br />
 
-                        <input type="password" name="password" id="password" placeholder='Enter Your Password' value={password} onChange={(e)=>setPassword(e.target.value)} className={styles.inp} />
+                        <input type="password" name="password" id="password" placeholder='Enter Your Password' value={password} onChange={(e) => setPassword(e.target.value)} className={styles.inp} />
                         <br />
                         <br />
-                        <p className={styles.error}> 
+                        <p className={styles.error}>
                             {error}
                         </p>
-                        <button type='submit' onClick={handleClick} className={styles.loginBtn}>{loading ? 'Loading...' : 'Log in'}</button>
+                        <button type='submit' className={styles.loginBtn} disabled={loading} >{loading ? 'Loading...' : 'Log in'}</button>
                     </form>
                     <br />
                     <div>

@@ -1,9 +1,11 @@
 .taskContainer {
     display: grid;
-  grid-template-columns: repeat(4,1fr);
+  grid-template-columns: repeat(3,1fr);
   width: 100%;
   padding-top: 50px;
   gap: 10px;
+  background-color: #c8bbe7;
+  padding-bottom: 40px;
   }
   
   .taskBox {
@@ -13,12 +15,13 @@
     margin: 10px;
     padding: 15px;
     border-radius: 10px;
-    border: 1px solid #ccc;
+    border: 2px solid black;
   }
   
   .twoBtn{
     display: flex;
-    padding-left: 50px;
+    padding-left: 80px;
+
   }
 
   .btn{
@@ -59,4 +62,40 @@
     border-radius: 10px;
     color: white;
     cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .taskContainer {
+    grid-template-columns: repeat(1, 1fr);
+    width: 50%;
+    padding-left: 50px;
+  }
+
+  .taskBox {
+    width: 90%;
+    height: 70%;
+    padding-left: 20px;
+    text-align: center;
+    border-radius: 10px;
+    border: 2px solid black;
+  }
+
+  .twoBtn {
+    padding-left: 20px; 
+  }
+
+
+
+  .changingBtn {
+    padding-left: 20px; 
+    padding-top: 10px; 
+  }
+  .changeInp{
+    width: 200px;
+    height: 20px;
+    text-align: center;
+    font-size: 15px;
+    border: none;
+    border-bottom: 1px solid black;
+}
 }
