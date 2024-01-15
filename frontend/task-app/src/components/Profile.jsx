@@ -9,7 +9,7 @@ const Profile = () => {
   const navigate = useNavigate();
   const showData = async () => {
     try {
-      const api = await axios.get(`https://ant-sunglasses.cyclic.app/profile?id=${userId}`)
+      const api = await axios.get(`https://lovely-pike-suspenders.cyclic.app//profile?id=${userId}`)
       setProfileData(api.data);
       console.log(api.data);
     } catch (error) {
@@ -32,7 +32,7 @@ const Profile = () => {
 
   const handleSaveChanges = async (ID) => {
     try {
-      await axios.patch(`  https://ant-sunglasses.cyclic.app/profile/${ID}`, {
+      await axios.patch(`https://lovely-pike-suspenders.cyclic.app//profile/${ID}`, {
         firstName: editData.firstName,
         lastName: editData.lastName,
         email: editData.email,

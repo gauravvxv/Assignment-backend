@@ -30,7 +30,7 @@ if(!firstName ||!lastName || !email || !password || !phone){
 }
 
 try {
-  const api = await axios.post('https://ant-sunglasses.cyclic.app/signup',data)
+  const api = await axios.post('https://lovely-pike-suspenders.cyclic.app/signup',data)
   alert("Signup Successful")
   console.log(api);
 

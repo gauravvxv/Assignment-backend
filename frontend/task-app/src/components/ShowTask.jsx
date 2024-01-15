@@ -8,7 +8,7 @@ const ShowTask = () => {
 
     const taskDataShow = async () => {
         try {
-            const api = await fetch(`https://ant-sunglasses.cyclic.app/task`);
+            const api = await fetch(`https://lovely-pike-suspenders.cyclic.app/task`);
             const data = await api.json();
             console.log(data);
             setShowData(data);
@@ -30,7 +30,7 @@ const ShowTask = () => {
 
     const handleSaveChanges = async (ID) => {
         try {
-            await axios.patch(`https://ant-sunglasses.cyclic.app/task/${ID}`, {
+            await axios.patch(`https://lovely-pike-suspenders.cyclic.app/task/${ID}`, {
                 title: editData.title,
                 description: editData.description
             });
@@ -51,7 +51,7 @@ const ShowTask = () => {
 
     const handleDelete = async (ID) => {
         try {
-            await axios.delete(`https://ant-sunglasses.cyclic.app/task/${ID}`);
+            await axios.delete(`https://lovely-pike-suspenders.cyclic.app/task/${ID}`);
             console.log(`the task has been deleted of this id :${ID}`)
 
             taskDataShow();

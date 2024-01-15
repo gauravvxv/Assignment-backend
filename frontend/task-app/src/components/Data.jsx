@@ -29,7 +29,7 @@ const Data = () => {
     }
 
     try {
-      const api = await axios.post('https://ant-sunglasses.cyclic.app/task/add', taskName);
+      const api = await axios.post('https://lovely-pike-suspenders.cyclic.app/task/add', taskName);
       alert("Task is Added")
       console.log(api);
       setInput(!showInput);

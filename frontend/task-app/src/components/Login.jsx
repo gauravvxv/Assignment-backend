@@ -23,7 +23,7 @@ const Login = () => {
 
         try {
             setLoading(true);
-            const api = await axios.post("https://ant-sunglasses.cyclic.app/login", data);
+            const api = await axios.post("https://lovely-pike-suspenders.cyclic.app/login", data);
             localStorage.setItem("token", api.data.token)
             login(api.data.token)
            console.log(api)
